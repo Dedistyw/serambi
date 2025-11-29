@@ -1,0 +1,28 @@
+# Environment
+/.env
+.env.local
+
+# Uploads
+/uploads/*
+!/uploads/.gitkeep
+
+# Logs
+*.log
+error_log
+
+# Database  
+*.sql
+*.sqlite
+
+# Backup
+backup/
+*.backup
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
