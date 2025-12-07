@@ -638,7 +638,7 @@ function getConstant($key, $default = '') {
                     Versi: <?php echo getConstant('APP_VERSION', '1.0.0'); ?>
                 </div>
                 <div class="footer-developer">
-                    Developer: <?php echo getConstant('DEVELOPER_NAME', 'Tim IT Masjid Al-Ikhlas'); ?>
+                    Developer: <?php echo getConstant('DEVELOPER_NAME', 'with ❤️ by hasan dan para muslim'); ?>
                 </div>
             </div>
         </div>
