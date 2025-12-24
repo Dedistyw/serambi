@@ -24,9 +24,9 @@ Sistem informasi masjid berbasis file JSON yang mudah diinstal dan dikelola.
 
 ## 🚀 Instalasi
 
-### Cara 1: Manual
-1. Download semua file proyek
-2. Upload ke server web Anda
+### Langkah wajib 1: Manual di ssh
+1. Download semua file proyek , git clone.
+2. Upload ke server web Anda.
 3. Atur permission folder:
    ```bash
    chmod 755 uploads/
@@ -39,11 +39,12 @@ Sistem informasi masjid berbasis file JSON yang mudah diinstal dan dikelola.
    sudo chmod -R 775 /var/www/html/serambi/uploads/
    sudo chmod -R 775 /var/www/html/serambi/assets/
 
-4. login pertama admin/admin123 , setelah berhasil segera ubah password nya
 
-### Cara otomatis
-1. ketik alaman https://domain.anda.com.serambi/setup.php
+### Langkah otomatis
+1. ketik alamat https://domain_anda.com/serambi/setup.php
 2. ikutin panduan yang ditampilkan.
+3. apabila server siap, tampilan konfirmasi tidak ada yang silang.
+4. login pertama admin/admin123 , setelah berhasil segera ubah password nya.
 
 software ini dikembangkan oleh HASAN & para Muslim didunia,
 kalian bisa berkontribusi di proyek ini bersama kami, membangun pemuda yang tangguh , mengutamakan akhlak.
