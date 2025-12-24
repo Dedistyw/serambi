@@ -34,8 +34,11 @@ Sistem informasi masjid berbasis file JSON yang mudah diinstal dan dikelola.
    chmod 755 uploads/images/
    chmod 755 assets/
    chmod 755 assets/images/
-	sudo chmod -R 755 /var/www/html/serambi/assets/images/
-	sudo chown -R www-data:www-data /var/www/html/serambi/assets/images/
+   sudo chown -R www-data:www-data /var/www/html/serambi/
+   sudo chmod -R 755 /var/www/html/serambi/
+   sudo chmod -R 775 /var/www/html/serambi/uploads/
+   sudo chmod -R 775 /var/www/html/serambi/assets/
+
 4. login pertama admin/admin123 , setelah berhasil segera ubah password nya
 
 ### Cara otomatis
