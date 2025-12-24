@@ -1,0 +1,78 @@
+{
+  "app_name": "SERAMBI - Sistem Informasi Masjid",
+  "version": "1.0.0",
+  "author": "HASAN dan para Muslim",
+  "requirements": {
+    "php_version": "7.4",
+    "extensions": [
+      "json",
+      "gd",
+      "fileinfo"
+    ],
+    "permissions": {
+      "uploads/": "0755",
+      "uploads/data/": "0755",
+      "uploads/images/": "0755",
+      "assets/": "0755",
+      "assets/images/": "0755"
+    }
+  },
+  "default_settings": {
+    "SITE_NAME": "Masjid Al-Ikhlas",
+    "MASJID_CITY": "Serpong - Tangerang Selatan",
+    "MASJID_TIMEZONE": "Asia/Jakarta",
+    "MASJID_PHONE": "+62123456789",
+    "MASJID_EMAIL": "info@masjid.HASAN",
+    "APP_VERSION": "1.0.0",
+    "DEVELOPER_NAME": "with ❤️ by HASAN dan para Muslim"
+  },
+  "data_templates": {
+    "pengumuman": [
+      {
+        "id": "1",
+        "judul": "Selamat Datang di Website Serambi Masjid",
+        "isi": "Website ini berisi informasi kegiatan dan pengumuman masjid.",
+        "penting": 1,
+        "aktif": 1,
+        "tanggal_berlaku": null,
+        "created_at": "2024-01-01 10:00:00"
+      }
+    ],
+    "mutiara_kata": [
+      {
+        "id": "1",
+        "teks": "Sebaik-baik manusia adalah yang paling bermanfaat bagi orang lain",
+        "sumber": "HR. Ahmad",
+        "aktif": 1,
+        "created_at": "2024-01-01 10:00:00"
+      }
+    ],
+    "jadwal_sholat": [
+      {
+        "id": "1",
+        "nama": "Subuh",
+        "waktu": "04:30:00",
+        "urutan": 1,
+        "aktif": 1
+      }
+    ],
+    "galeri": [],
+    "keuangan": [],
+    "profil_masjid": {},
+    "admin": {}
+  },
+  "installation_steps": [
+    "Upload semua file ke server",
+    "Pastikan PHP versi 7.4 atau lebih tinggi",
+    "Set permission folder uploads menjadi 755",
+    "Akses admin/login.php",
+    "Login dengan username: admin, password: admin123",
+    "Ganti password default segera setelah login pertama"
+  ],
+  "notes": [
+    "Sistem ini menggunakan file JSON, tidak memerlukan database",
+    "Backup folder uploads secara berkala",
+    "Ganti password default untuk keamanan",
+    "Update jadwal sholat melalui admin panel"
+  ]
+}

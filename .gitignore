@@ -1,0 +1,82 @@
+
+---
+
+## 📄 **FILE 8: .gitignore**
+
+```gitignore
+# SERAMBI - .gitignore
+
+# Uploads directory (user-generated content)
+/uploads/images/*
+!/uploads/images/.gitkeep
+/uploads/data/*.log
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Environment files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Backup files
+*.bak
+*.backup
+*.old
+
+# Temporary files
+tmp/
+temp/
+
+# Development files
+composer.json
+composer.lock
+package.json
+package-lock.json
+node_modules/
+
+# Cache
+.cache/
+*.cache
+
+# Session files
+sess_*
+
+# System files
+*.sys
+*.dll
+*.exe
+
+# Keep empty directories
+!.gitkeep
+
+# Keep sample images
+!/assets/images/logo-masjid.jpg
+!/assets/images/islamic-pattern.png
+!/assets/images/islamic-pattern-white.png
+!/assets/images/default-gallery.jpg
+
+# Keep default data structure
+!/uploads/data/.gitkeep
+!/uploads/images/.gitkeep

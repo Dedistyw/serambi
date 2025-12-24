@@ -1,0 +1,580 @@
+/**
+ * SERAMBI - Public CSS
+ * File ini untuk styling tambahan jika diperlukan
+ */
+
+/* Loading animation */
+.loading {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(0,0,0,.3);
+    border-radius: 50%;
+    border-top-color: #2E8B57;
+    animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Tooltip */
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: #2E8B57;
+    color: white;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -60px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-size: 12px;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Print styles */
+@media print {
+    .header, .footer, .menu-section {
+        break-inside: avoid;
+    }
+    
+    .mutiara-slider, .gallery-section {
+        display: none;
+    }
+    
+    body {
+        background: white !important;
+        color: black !important;
+    }
+    
+    .menu-column {
+        border: 1px solid #ccc !important;
+        background: white !important;
+    }
+}
+
+/* Animation for notifications */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.notification {
+    animation: fadeInUp 0.3s ease-out;
+}
+
+/* Scroll to top button */
+.scroll-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #2E8B57;
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    transition: all 0.3s;
+}
+
+.scroll-to-top:hover {
+    background: #26734a;
+    transform: translateY(-3px);
+}
+
+/* Accessibility - skip to content */
+.skip-to-content {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: #2E8B57;
+    color: white;
+    padding: 8px;
+    z-index: 1001;
+    text-decoration: none;
+}
+
+.skip-to-content:focus {
+    top: 0;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .masjid-name, .masjid-location {
+        text-shadow: 0 0 2px black;
+    }
+    
+    .mutiara-text {
+        color: #fff;
+        text-shadow: 0 0 2px #000;
+    }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    body {
+        background: linear-gradient(135deg, #4a5568 0%, #2d3748 100%);
+    }
+    
+    .menu-section, .gallery-section, .footer {
+        background: rgba(45, 55, 72, 0.95);
+        color: #e2e8f0;
+    }
+    
+    .menu-column {
+        background: #2d3748;
+        border-color: #4a5568;
+        color: #e2e8f0;
+    }
+    
+    .jadwal-item {
+        background: #4a5568;
+        border-color: #718096;
+        color: #e2e8f0;
+    }
+    
+    .keuangan-item, .pengumuman-item, .profil-item {
+        border-color: #4a5568;
+    }
+}
+
+/* =============================================== */
+/* GALERI MOBILE ENHANCEMENT - TAMBAHAN BARU       */
+/* =============================================== */
+
+/* Mobile Zoom Container */
+.mobile-zoom-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.98);
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+    touch-action: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.mobile-zoom-container.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.mobile-zoom-image-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    position: relative;
+}
+
+.mobile-zoom-image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    transform-origin: center center;
+    transition: transform 0.1s linear;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.mobile-zoom-controls {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    gap: 15px;
+    z-index: 10000;
+}
+
+.mobile-zoom-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    border: none;
+    color: white;
+    font-size: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.mobile-zoom-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.mobile-zoom-info {
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    color: white;
+    padding: 15px;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+    font-size: 14px;
+}
+
+.mobile-zoom-counter {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    color: white;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/* Mobile Gallery Navigation (untuk touch) */
+.mobile-gallery-nav {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .mobile-gallery-nav {
+        display: flex;
+        justify-content: space-between;
+        position: absolute;
+        top: 50%;
+        left: 10px;
+        right: 10px;
+        transform: translateY(-50%);
+        z-index: 100;
+        opacity: 0;
+        transition: opacity 0.3s;
+    }
+    
+    .multi-slideshow-container:hover .mobile-gallery-nav {
+        opacity: 1;
+    }
+    
+    .mobile-gallery-nav-btn {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.8);
+        border: none;
+        color: #2E8B57;
+        font-size: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        -webkit-tap-highlight-color: transparent;
+    }
+}
+
+/* Responsive Gallery Styles */
+@media (max-width: 768px) {
+    /* Galeri Mobile Layout */
+    .multi-slideshow-container {
+        height: auto !important;
+        min-height: 250px;
+        position: relative;
+        overflow: visible !important;
+    }
+    
+    .multi-slideshow-wrapper {
+        position: relative;
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    /* Tampilkan semua slide secara vertikal di mobile */
+    .multi-slideshow-slide {
+        position: relative !important;
+        opacity: 1 !important;
+        display: grid !important;
+        grid-template-columns: 1fr;
+        gap: 15px;
+        padding: 10px;
+        background: #f8f9fa;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        height: auto;
+        min-height: 300px;
+    }
+    
+    /* Setiap foto item penuh lebar */
+    .multi-photo-item {
+        width: 100% !important;
+        height: 300px !important;
+        flex: none !important;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 3px 6px rgba(0,0,0,0.16);
+        position: relative;
+    }
+    
+    .multi-photo-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+        cursor: zoom-in;
+        -webkit-tap-highlight-color: transparent;
+    }
+    
+    .multi-photo-item img:active {
+        transform: scale(0.98);
+    }
+    
+    .multi-photo-overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: linear-gradient(transparent, rgba(0,0,0,0.85));
+        padding: 20px;
+        color: white;
+        transform: translateY(100%);
+        transition: transform 0.3s ease;
+    }
+    
+    .multi-photo-item:hover .multi-photo-overlay {
+        transform: translateY(0);
+    }
+    
+    .multi-photo-title {
+        font-size: 16px;
+        font-weight: 600;
+        margin-bottom: 5px;
+        white-space: normal;
+        text-overflow: unset;
+        overflow: visible;
+    }
+    
+    /* Sembunyikan navigasi slideshow standar */
+    .multi-slideshow-nav,
+    .multi-slideshow-indicators {
+        display: none !important;
+    }
+    
+    /* Mobile Gallery Controls */
+    .mobile-gallery-controls {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 15px;
+        padding: 10px;
+    }
+    
+    .mobile-gallery-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: rgba(46, 139, 87, 0.3);
+        cursor: pointer;
+        transition: all 0.3s;
+    }
+    
+    .mobile-gallery-dot.active {
+        background: #2E8B57;
+        transform: scale(1.2);
+    }
+    
+    /* QR Code mobile adjustment */
+    .qr-container {
+        height: 250px;
+        margin-top: 20px;
+        border-radius: 12px;
+        overflow: hidden;
+    }
+    
+    /* Galeri section mobile */
+    .gallery-section {
+        padding: 20px !important;
+    }
+    
+    .gallery-section h2 {
+        font-size: 22px;
+        margin-bottom: 25px;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Galeri mobile kecil */
+    .multi-photo-item {
+        height: 250px !important;
+    }
+    
+    .multi-photo-overlay {
+        padding: 15px;
+        transform: translateY(0);
+    }
+    
+    .multi-photo-title {
+        font-size: 14px;
+    }
+    
+    .qr-container {
+        height: 200px;
+    }
+    
+    .mobile-zoom-btn {
+        width: 45px;
+        height: 45px;
+        font-size: 20px;
+    }
+    
+    .mobile-zoom-counter {
+        font-size: 12px;
+        padding: 6px 12px;
+    }
+    
+    .mobile-zoom-info {
+        font-size: 12px;
+        padding: 12px;
+    }
+}
+
+/* Touch Gesture Support */
+.touch-gesture-hint {
+    position: fixed;
+    bottom: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 12px 20px;
+    border-radius: 25px;
+    font-size: 14px;
+    display: none;
+    z-index: 10001;
+    animation: fadeInOut 3s ease;
+}
+
+@keyframes fadeInOut {
+    0%, 100% { opacity: 0; transform: translateX(-50%) translateY(20px); }
+    20%, 80% { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+/* Loading for zoom images */
+.mobile-zoom-loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40px;
+    height: 40px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: #2E8B57;
+    animation: spin 1s ease-in-out infinite;
+    z-index: 10000;
+}
+
+/* Prevent text selection on mobile */
+.no-select {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Swipe hint for mobile */
+.swipe-hint {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 11px;
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .swipe-hint {
+        display: block;
+    }
+}
+
+/* Zoom transition */
+.zoom-transition {
+    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Double tap to zoom hint */
+.double-tap-hint {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 5px;
+    font-size: 12px;
+    display: none;
+    z-index: 100;
+}
+
+@media (max-width: 768px) {
+    .double-tap-hint {
+        display: block;
+        animation: pulse 2s infinite;
+    }
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 0.7; }
+    50% { opacity: 1; }
+}

@@ -1,0 +1,11 @@
+{
+    "total_visitors": 2,
+    "today_visitors": 1,
+    "unique_visitors": 2,
+    "visitors_by_day": {
+        "2025-12-23": 1,
+        "2025-12-24": 1
+    },
+    "last_reset": "2025-12-24",
+    "last_visit": "2025-12-24 22:59:24"
+}

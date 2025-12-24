@@ -1,0 +1,109 @@
+# SERAMBI - .htaccess
+ErrorDocument 500 /error/500.html
+
+# Display PHP errors
+php_flag display_errors on
+php_value error_reporting E_ALL
+
+# Security
+Options -Indexes
+
+<FilesMatch "\.(json|log)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# SERAMBI - .htaccess Configuration
+
+# Enable rewrite engine
+RewriteEngine On
+
+# Prevent directory listing
+Options -Indexes
+
+# Security headers
+<IfModule mod_headers.c>
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-Frame-Options "SAMEORIGIN"
+    Header set X-XSS-Protection "1; mode=block"
+    Header set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+# Protect sensitive files
+<FilesMatch "\.(json|log|ini|conf)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+<FilesMatch "^(\.htaccess|\.htpasswd|\.git|\.env)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Protect admin directory
+<IfModule mod_authz_core.c>
+    <Directory "admin">
+        AuthType Basic
+        AuthName "Restricted Access"
+        AuthUserFile /path/to/.htpasswd
+        Require valid-user
+    </Directory>
+</IfModule>
+
+# Prevent access to uploads directory except for images
+<FilesMatch "\.(php|php5|php7|phtml|phps)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+<FilesMatch "\.(jpg|jpeg|png|gif|ico|webp)$">
+    Order allow,deny
+    Allow from all
+</FilesMatch>
+
+# Error documents
+ErrorDocument 403 /error/403.html
+ErrorDocument 404 /error/404.html
+ErrorDocument 500 /error/500.html
+
+# cache issu
+php_flag opcache.enable Off
+php_flag opcache.enable_cli Off
+
+# Cache control for static assets
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType text/html "access plus 0 seconds"
+    ExpiresByType text/css "access plus 0 seconds"
+    ExpiresByType text/javascript "access plus 0 seconds"
+    ExpiresByType application/javascript "access plus 0 seconds"
+    ExpiresByType image/jpg "access plus 0 seconds"
+    ExpiresByType image/jpeg "access plus 0 seconds"
+    ExpiresByType image/png "access plus 0 seconds"
+    ExpiresByType image/gif "access plus 0 seconds"
+    ExpiresByType image/webp "access plus 0 seconds"
+</IfModule>
+
+<IfModule mod_headers.c>
+    <FilesMatch "\.(html|htm|php)$">
+        Header set Cache-Control "no-cache, no-store, must-revalidate"
+        Header set Pragma "no-cache"
+        Header set Expires 0
+    </FilesMatch>
+</IfModule>
+
+# Compression
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/json
+</IfModule>
+
+# URL Rewriting (if needed)
+# RewriteCond %{REQUEST_FILENAME} !-f
+# RewriteCond %{REQUEST_FILENAME} !-d
+# RewriteRule ^(.*)$ index.php?path=$1 [L,QSA]
+
+#untuk ukuran file uploads
+php_value upload_max_filesize 10M
+php_value post_max_size 12M
+php_value max_execution_time 300
+php_value max_input_time 300
